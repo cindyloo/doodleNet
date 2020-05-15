@@ -1,6 +1,6 @@
 excerpted and adapted from [@yining1023](https://github.com/yining1023) and (@zaidalyafeai](https://github.com/zaidalyafeai) # DoodleNet 
 
-I updated to tensorflow 2.0 and sectioned of the training and reloading/testing the model , that is any set specified in classNames.txt
+I updated to tensorflow 2.0 and partitioned the training and reloading/testing the model, which is any subset as specified in classNames.txt
 
 
 
