@@ -137,7 +137,11 @@ adam = tf.compat.v1.train.AdamOptimizer()
 model.compile(loss='categorical_crossentropy', optimizer=adam, metrics=['top_k_categorical_accuracy'])
 print(model.summary())
 
-#binary_crossentropy
+# we have to run the fit method several times to get good predictions
+# I don't know if it is better to run this entire module (doodleTrain.py) over several times or
+# whether I should parse up the training and testing images and run the fit method
+# several times *within* this module
+
 model.fit(x = x_train, y = y_train, validation_split=0.1, batch_size = 256, verbose=2, epochs=10)
 
 print(len(x_train))

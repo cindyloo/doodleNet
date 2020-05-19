@@ -16,7 +16,7 @@ import numpy as np
 from tensorflow.keras import layers
 from tensorflow import keras
 import tensorflow as tf
-
+import tensorflowjs as tfjs
 
 class_names = []
 
@@ -101,7 +101,11 @@ model = load_model("keras.h5")
 model.compile(loss='categorical_crossentropy', optimizer="Adam", metrics=['top_k_categorical_accuracy'])
 print(model.summary())
 
-#binary_crossentropy
+# we have to run the fit method several times to get good accuracy on evaluations
+# I don't know if it is better to run this entire module (doodleTrain.py) over several times or
+# whether I should parse up the training and testing images and run the fit method
+# several times *within* this module
+#how many times should I compile? what is significanc eof batch sizes and epochs?
 model.fit(x = x_train, y = y_train, validation_split=0.1, batch_size = 256, verbose=2, epochs=10)
 
 print(len(x_train))
@@ -128,7 +132,8 @@ with open('class_names.txt', 'w') as file_handler:
     for item in class_names:
         file_handler.write("{}\n".format(item))
 
-
+# save as tensorflowjs model
+# tfjs.converters.save_keras_model(model, tfjs_target_dir)
 model.save('keras.h5')
 #!mkdir model
 #!tensorflowjs_converter --input_format keras keras.h5 model/

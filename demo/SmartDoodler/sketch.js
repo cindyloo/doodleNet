@@ -4,9 +4,10 @@ let cnv;
 let model;
 
 async function loadMyModel() {
-  const uploadJSONInput = document.getElementById('upload-json');
-  const uploadWeightsInput = document.getElementById('upload-weights');
-  model = await tf.loadLayersModel(tf.io.browserFiles([uploadJSONInput.files[0], uploadWeightsInput.files[0]]));
+  //const uploadJSONInput = document.getElementById('upload-json');
+  //const uploadWeightsInput = document.getElementById('upload-weights');
+  const model = await tf.loadLayersModel('localhost:5000/model.json');
+  //model = await tf.loadLayersModel(tf.io.browserFiles([uploadJSONInput.files[0], uploadWeightsInput.files[0]]));
   model.summary();
 }
 
